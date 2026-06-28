@@ -1,49 +1,17 @@
-﻿# Inspirational Message Generator
+﻿🛠️ How It Works
 
-A simple Node.js script that displays a random inspirational message every time you run it.
+Every time you run the script, it prints one random inspirational quote to the console. Here's the mechanism behind it:
 
-## 📂 Project Structure
 
-```
-project-root/
-├── resources/
-│   └── messages.js
-└── README.md
-```
+A list of quotes — messages.js stores an array of inspirational strings, like "Believe you can and you're halfway there."
+Picking one at random — it calls Math.random(), which returns a decimal between 0 and 1. Multiplying that by the list's length and rounding down with Math.floor turns it into a random valid index into the array:
 
-## 🚀 Getting Started
 
-### Prerequisites
+js   const randomIndex = Math.floor(Math.random() * messages.length);
+   return messages[randomIndex];
 
-- [Node.js](https://nodejs.org/) installed on your machine
 
-### Installation
+Printing it — the chosen message is wrapped in quotes and printed with console.log.
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   ```
-2. Navigate into the project folder:
-   ```bash
-   cd your-repo-name
-   ```
 
-### Usage
-
-Run the script with Node.js:
-
-```bash
-node resources/messages.js
-```
-
-Each time you run the command, a random inspirational message will be printed to the console.
-
-## ✨ Example Output
-
-```
-"Believe you can and you're halfway there."
-```
-
-## 🛠️ How It Works
-
-The script stores a list of inspirational messages and uses JavaScript's `Math.random()` to pick one at random each time it runs.
+There's no database, no API calls, and no state saved between runs — each run is an independent random pick from a fixed list, so you'll see a different (or occasionally repeated) quote each time.
